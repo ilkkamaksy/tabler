@@ -35,9 +35,9 @@ const Table = ({
 			<div className="table data-table">
 				<div className="table-header-group">
 					<div className="table-row">
-						<div className="table-cell table-cell--header-cell" onClick={() => reSort('name')}>Name</div>
-						<div className="table-cell table-cell--header-cell" onClick={() => reSort('email')}>E-mail address</div>
-						<div className="table-cell table-cell--header-cell" onClick={() => reSort('phone')}>Phone number</div>
+						<div className={`table-cell table-cell--header-cell ${sortConfig && sortConfig.key === 'name' ? 'sorted' : ''}`} onClick={() => reSort('name')}>Name</div>
+						<div className={`table-cell table-cell--header-cell ${sortConfig && sortConfig.key === 'email' ? 'sorted' : ''}`} onClick={() => reSort('email')}>E-mail address</div>
+						<div className={`table-cell table-cell--header-cell ${sortConfig && sortConfig.key === 'phone' ? 'sorted' : ''}`} onClick={() => reSort('phone')}>Phone number</div>
 						<div className="table-cell table-cell--header-cell table-cell-end"></div>
 					</div>
 				</div>
