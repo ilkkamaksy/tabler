@@ -24,7 +24,7 @@ function App():React.ReactElement {
 			<div className="container">
 				<section role="main">
 					<h1>List of participants</h1>
-					{participants.length > 0 && <Table participants={participants} />}
+					{!loading && <Table participants={participants} />}
 				</section>
 			</div>
 		</div>

@@ -11,7 +11,7 @@ const Table = ({ participants }:Props):React.ReactElement => {
 			<table>
 				<thead>
 					<tr>
-						<th>Full Name</th>
+						<th>Name</th>
 						<th>E-mail address</th>
 						<th>Phone number</th>
 						<th>Add new</th>
