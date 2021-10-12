@@ -139,6 +139,10 @@ body .icon-btn svg {
   margin-left: 10px;
 }
 
+.table-cell.table-cell--header-cell.sorted {
+  color: #505050;
+}
+
 .table-cell--data-cell {
   color: #505050;
   font-size: 16px;
