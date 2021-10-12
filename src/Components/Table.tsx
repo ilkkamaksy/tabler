@@ -49,9 +49,9 @@ const Table = ({
 						} else {
 							return (
 								<div className="table-row" key={participant.id}>
-									<div className="table-cell">{participant.name}</div>
-									<div className="table-cell">{participant.email}</div>
-									<div className="table-cell">{participant.phone}</div>
+									<div className="table-cell" onClick={() => handleSelect(participant)}>{participant.name}</div>
+									<div className="table-cell" onClick={() => handleSelect(participant)}>{participant.email}</div>
+									<div className="table-cell" onClick={() => handleSelect(participant)}>{participant.phone}</div>
 									<div className="table-cell">
 										<button onClick={() => handleSelect(participant)}>Edit</button>
 										<button onClick={() => handleRemove(participant)}>Remove</button>
