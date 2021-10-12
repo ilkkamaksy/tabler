@@ -38,7 +38,7 @@ const Table = ({
 						<div className="table-cell table-cell--header-cell table-cell--name" onClick={() => reSort('name')}>Name</div>
 						<div className="table-cell table-cell--header-cell" onClick={() => reSort('email')}>E-mail address</div>
 						<div className="table-cell table-cell--header-cell table-cell--phone" onClick={() => reSort('phone')}>Phone number</div>
-						<div className="table-cell table-cell--header-cell table-cell-end">Add new</div>
+						<div className="table-cell table-cell--header-cell table-cell-end"></div>
 					</div>
 				</div>
 				<div className="table-row-group">
