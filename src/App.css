@@ -98,6 +98,21 @@ input[type="text"] {
   margin-right:4%;
 }
 
+.icon-btn {
+  background: transparent;
+  border: none;
+  height: 24px;
+  width: 24px;
+  margin-left: 20px;
+}
+
+body .icon-btn svg {
+  height: 24px;
+  color: #909090;
+  min-width: 18px;
+  cursor: pointer;
+}
+
 /* table */
 .table {
   display: table;
@@ -118,6 +133,10 @@ input[type="text"] {
   line-height: 16px;
   font-weight: 500;
   cursor: pointer;
+}
+
+.table-cell--header-cell svg {
+  margin-left: 10px;
 }
 
 .table-cell--data-cell {
