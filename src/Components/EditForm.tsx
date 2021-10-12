@@ -29,12 +29,11 @@ const EditForm = ({ selectedParticipant, handleSubmit, handleSelect }:Props):Rea
 				.matches(/^\d+$/, 'Numbers only')
 				.required('Required'),
 		}),
-		onSubmit: values => {
+		onSubmit: (values, { resetForm }) => {
 			handleSubmit(values)
-		}
+			resetForm()
+		},
 	})
-
-	
 
 	return (
 		<form className="table-row form" onSubmit={formik.handleSubmit}>
@@ -78,8 +77,13 @@ const EditForm = ({ selectedParticipant, handleSubmit, handleSelect }:Props):Rea
 				{ formik.errors.phone && <div className="form-errors">{formik.errors.phone}</div> }
 			</div>
 			<div className="table-cell table-cell-end">
-				{!selectedParticipant ? 
-					<button className="submit-btn btn" type="submit">Add new</button>
+				{!selectedParticipant 
+					? 
+					<button 
+						className={`submit-btn btn ${formik.values.name.length > 0 && formik.isValid ? 'active' : 'inactive'}`}
+						type="submit">
+							Add new
+					</button>
 					: <div>
 						<button 
 							className="cancel-btn btn"

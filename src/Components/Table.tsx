@@ -23,8 +23,6 @@ const Table = ({
 
 	const { sortedParticipants, reSort, sortConfig } = useSortableData({ participants, config: { key: 'name',  direction: 'ascending' }})
 
-	console.log(sortConfig)
-
 	return (
 		<div className="table-container">
 			<div className="table">

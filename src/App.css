@@ -86,6 +86,11 @@ input[type="text"] {
   width: 120px;
 }
 
+.submit-btn.active {
+  background: #07f;
+  color: #fff;
+}
+
 .save-btn.btn {
   background: #07f;
   color: #fff;
