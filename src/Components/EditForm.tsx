@@ -1,29 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Participant } from '../types'
 
 interface Props {
-	participant: Participant|undefined
+	selectedParticipant: Participant|undefined
 	handleSubmit: (values:Participant) => void
 }
 
-const EditForm = ({ participant, handleSubmit }:Props):React.ReactElement => {
+const EditForm = ({ selectedParticipant, handleSubmit }:Props):React.ReactElement => {
 	
-	const [initialValues, setInitialValues] = useState<Participant>({
-		name: '',
-		email: '',
-		phone: ''
-	})
-
-	useEffect(() => {
-		if (participant) {
-			setInitialValues(participant)
-		}
-	}, [])
-
 	const formik = useFormik({
-		initialValues,
+		initialValues: selectedParticipant ? selectedParticipant : {
+			name: '',
+			email: '',
+			phone: ''
+		},
 		validationSchema: Yup.object({
 			name: Yup.string()
 				.min(2, 'Name is too Short')
@@ -42,8 +34,14 @@ const EditForm = ({ participant, handleSubmit }:Props):React.ReactElement => {
 	})
 
 	return (
-		<form onSubmit={formik.handleSubmit}>
-			<div className="form-col form-col--start">
+		<form className="table-row" onSubmit={formik.handleSubmit}>
+			<input
+				id="id"
+				name="id"
+				type="hidden"
+				value={formik.values.id}
+			/>
+			<div className="table-cell">
 				<input
 					id="name"
 					name="name"
@@ -54,7 +52,7 @@ const EditForm = ({ participant, handleSubmit }:Props):React.ReactElement => {
 				/>
 				{ formik.errors.name && <div className="form-errors">{formik.errors.name}</div> }
 			</div>
-			<div className="form-col">
+			<div className="table-cell">
 				<input
 					id="email"
 					name="email"
@@ -65,7 +63,7 @@ const EditForm = ({ participant, handleSubmit }:Props):React.ReactElement => {
 				/>
 				{ formik.errors.email && <div className="form-errors">{formik.errors.email}</div> }
 			</div>
-			<div className="form-col form-col--end">
+			<div className="table-cell">
 				<input
 					id="phone"
 					name="phone"
@@ -76,8 +74,14 @@ const EditForm = ({ participant, handleSubmit }:Props):React.ReactElement => {
 				/>
 				{ formik.errors.phone && <div className="form-errors">{formik.errors.phone}</div> }
 			</div>
-			<div>
-				<button className="submit-url" type="submit">Add new</button>
+			<div className="table-cell">
+				{!selectedParticipant ? 
+					<button className="submit-btn" type="submit">Add new</button>
+					: <div>
+						<button className="cancel-btn" type="submit">Cancel</button>
+						<button className="submit-btn" type="submit">Save</button>
+					</div>}
+				
 			</div>
 		</form>
 	)

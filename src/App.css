@@ -14,18 +14,27 @@
   margin: 0 auto;
 }
 
-table {
-  background-color: transparent;
+.table {
+  display: table;
+  background-color: #fff;
   width: 100%;
   border-collapse: collapse;
 }
 
-table tr {
+.table-header-group {
+  display: table-header-group;
+}
+
+.table-row-group {
+  display: table-row-group;
+}
+
+.table-row {
+  display: table-row;
   background-color: #fff;
 }
 
-table thead:after {
-  content: "";
-  display: table-row;
-  height: 10px;
+.table-cell {
+  display: table-cell;
 }
+

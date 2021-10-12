@@ -1,36 +1,59 @@
 import React from 'react'
 import { Participant } from '../types'
+import EditForm from './EditForm'
 
 interface Props {
 	participants: Participant[]
+	selectedParticipant: Participant|undefined
+	handleSelect: (value:Participant) => void
+	handleRemove: (value:Participant) => void
+	handleSubmit: (values:Participant) => void
 }
 
-const Table = ({ participants }:Props):React.ReactElement => {
+const Table = ({ 
+	participants, 
+	selectedParticipant,
+	handleSelect,
+	handleRemove,
+	handleSubmit 
+}:Props):React.ReactElement => {
 	return (
 		<div className="table-container">
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>E-mail address</th>
-						<th>Phone number</th>
-						<th>Add new</th>
-					</tr>
-				</thead>
-				<tbody>
+			<div className="table">
+				<EditForm handleSubmit={handleSubmit} selectedParticipant={undefined} />
+			</div>
+			<div className="table">
+				<div className="table-header-group">
+					<div className="table-row">
+						<div className="table-cell">Name</div>
+						<div className="table-cell">E-mail address</div>
+						<div className="table-cell">Phone number</div>
+						<div className="table-cell">Add new</div>
+					</div>
+				</div>
+				<div className="table-row-group">
 					{participants.map(participant => {
-						return (
-							<tr key={participant.id}>
-								<td>{participant.name}</td>
-								<td>{participant.email}</td>
-								<td>{participant.phone}</td>
-								<td>tools</td>
-							</tr>
-						)
+						if (selectedParticipant && selectedParticipant.id === participant.id) {
+							return (
+								<EditForm key={participant.id} selectedParticipant={selectedParticipant} handleSubmit={handleSubmit} />
+							)
+						} else {
+							return (
+								<div className="table-row" key={participant.id}>
+									<div className="table-cell">{participant.name}</div>
+									<div className="table-cell">{participant.email}</div>
+									<div className="table-cell">{participant.phone}</div>
+									<div className="table-cell">
+										<button onClick={() => handleSelect(participant)}>Edit</button>
+										<button onClick={() => handleRemove(participant)}>Remove</button>
+									</div>
+								</div>
+							)
+						}
 					})}
 					
-				</tbody>
-			</table>
+				</div>
+			</div>
 		</div>
 	)
 }

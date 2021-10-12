@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import EditForm from './Components/EditForm'
 import Header from './Components/Header'
 import Table from './Components/Table'
 import { getParticipants } from './services/mockService'
+import { generateID } from './utils/utils'
 import { Participant } from './types'
 
 function App():React.ReactElement {
@@ -20,12 +20,25 @@ function App():React.ReactElement {
 		}		
 	}, [])
 
-	const handleSubmit = (value:Participant) => {
-		setParticipants(participants.concat(value))
+	const handleSubmit = (participant:Participant) => {
+		if (selectedParticipant) {
+			setParticipants(participants.map(p => p.id === participant.id ? participant : p))
+			setSelectedParticipant(undefined)
+			return
+		}
+		const participantToAdd = {
+			id: generateID(),
+			...participant
+		}
+		setParticipants(participants.concat(participantToAdd))
 	}
 
-	const handleSelect = (value:Participant) => {
-		setSelectedParticipant(value)
+	const handleRemove = (participant:Participant) => {
+		setParticipants(participants.filter(p => p.id !== participant.id))
+	}
+
+	const handleSelect = (participant:Participant) => {
+		setSelectedParticipant(participant)
 	}
 
 	return (
@@ -33,9 +46,15 @@ function App():React.ReactElement {
 			<Header />
 			<div className="container">
 				<section role="main">
-					<h1>List of participants</h1>
-					<EditForm handleSubmit={handleSubmit} participant={selectedParticipant} />
-					{!loading && <Table participants={participants} />}
+					<h1>List of participants</h1>					
+					{!loading && 
+						<Table 
+							participants={participants} 
+							selectedParticipant={selectedParticipant} 
+							handleSelect={handleSelect}
+							handleRemove={handleRemove}
+							handleSubmit={handleSubmit}
+						/>}
 				</section>
 			</div>
 		</div>
