@@ -15,7 +15,16 @@ type Items = {
 
 type Args = Config & Items
 
-export const useSortableData = ({participants, config = null }: Args) => {
+type ReturnType = {
+	sortedParticipants: Participant[]
+	reSort: (key:string) => void
+	sortConfig: null | {
+		key: string
+		direction: string
+	}
+}
+
+export const useSortableData = ({participants, config = null }: Args):ReturnType => {
 	
 	const [sortConfig, setSortConfig] = useState(config)
     

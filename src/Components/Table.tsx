@@ -35,9 +35,9 @@ const Table = ({
 			<div className="table data-table">
 				<div className="table-header-group">
 					<div className="table-row">
-						<div className="table-cell table-cell--header-cell table-cell--name" onClick={() => reSort('name')}>Name</div>
+						<div className="table-cell table-cell--header-cell" onClick={() => reSort('name')}>Name</div>
 						<div className="table-cell table-cell--header-cell" onClick={() => reSort('email')}>E-mail address</div>
-						<div className="table-cell table-cell--header-cell table-cell--phone" onClick={() => reSort('phone')}>Phone number</div>
+						<div className="table-cell table-cell--header-cell" onClick={() => reSort('phone')}>Phone number</div>
 						<div className="table-cell table-cell--header-cell table-cell-end"></div>
 					</div>
 				</div>
@@ -55,9 +55,9 @@ const Table = ({
 						} else {
 							return (
 								<div className="table-row" key={participant.id}>
-									<div className="table-cell table-cell--data-cell table-cell--name" onClick={() => handleSelect(participant)}>{participant.name}</div>
+									<div className="table-cell table-cell--data-cell" onClick={() => handleSelect(participant)}>{participant.name}</div>
 									<div className="table-cell table-cell--data-cell" onClick={() => handleSelect(participant)}>{participant.email}</div>
-									<div className="table-cell table-cell--data-cell table-cell--phone" onClick={() => handleSelect(participant)}>{participant.phone}</div>
+									<div className="table-cell table-cell--data-cell" onClick={() => handleSelect(participant)}>{participant.phone}</div>
 									<div className="table-cell table-cell--data-cell table-cell-end">
 										<button onClick={() => handleSelect(participant)}>Edit</button>
 										<button onClick={() => handleRemove(participant)}>Remove</button>
