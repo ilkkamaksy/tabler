@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
+import EditForm from './Components/EditForm'
 import Header from './Components/Header'
 import Table from './Components/Table'
 import { getParticipants } from './services/mockService'
@@ -8,6 +9,7 @@ import { Participant } from './types'
 function App():React.ReactElement {
 
 	const [participants, setParticipants] = useState<Participant[]>([])
+	const [selectedParticipant, setSelectedParticipant] = useState<Participant>()
 	const [loading, setLoading] = useState<boolean>(true)
 
 	useEffect(() => {
@@ -18,12 +20,21 @@ function App():React.ReactElement {
 		}		
 	}, [])
 
+	const handleSubmit = (value:Participant) => {
+		setParticipants(participants.concat(value))
+	}
+
+	const handleSelect = (value:Participant) => {
+		setSelectedParticipant(value)
+	}
+
 	return (
 		<div className="App">
 			<Header />
 			<div className="container">
 				<section role="main">
 					<h1>List of participants</h1>
+					<EditForm handleSubmit={handleSubmit} participant={selectedParticipant} />
 					{!loading && <Table participants={participants} />}
 				</section>
 			</div>
