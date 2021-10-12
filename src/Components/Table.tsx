@@ -1,6 +1,7 @@
 import React from 'react'
 import { Participant } from '../types'
 import EditForm from './EditForm'
+import { useSortableData } from '../hooks/SortableData'
 
 interface Props {
 	participants: Participant[]
@@ -17,6 +18,11 @@ const Table = ({
 	handleRemove,
 	handleSubmit 
 }:Props):React.ReactElement => {
+
+	const { sortedParticipants, reSort, sortConfig } = useSortableData({ participants, config: { key: 'name',  direction: 'ascending' }})
+
+	console.log(sortConfig)
+
 	return (
 		<div className="table-container">
 			<div className="table">
@@ -29,14 +35,14 @@ const Table = ({
 			<div className="table">
 				<div className="table-header-group">
 					<div className="table-row">
-						<div className="table-cell">Name</div>
-						<div className="table-cell">E-mail address</div>
-						<div className="table-cell">Phone number</div>
+						<div className="table-cell" onClick={() => reSort('name')}>Name</div>
+						<div className="table-cell" onClick={() => reSort('email')}>E-mail address</div>
+						<div className="table-cell" onClick={() => reSort('phone')}>Phone number</div>
 						<div className="table-cell">Add new</div>
 					</div>
 				</div>
 				<div className="table-row-group">
-					{participants.map(participant => {
+					{sortedParticipants.map(participant => {
 						if (selectedParticipant && selectedParticipant.id === participant.id) {
 							return (
 								<EditForm 
