@@ -37,14 +37,14 @@ const EditForm = ({ selectedParticipant, handleSubmit, handleSelect }:Props):Rea
 	
 
 	return (
-		<form className="table-row" onSubmit={formik.handleSubmit}>
+		<form className="table-row form" onSubmit={formik.handleSubmit}>
 			<input
 				id="id"
 				name="id"
 				type="hidden"
 				value={formik.values.id}
 			/>
-			<div className="table-cell">
+			<div className="table-cell table-cell-start table-cell--name">
 				<input
 					id="name"
 					name="name"
@@ -66,7 +66,7 @@ const EditForm = ({ selectedParticipant, handleSubmit, handleSelect }:Props):Rea
 				/>
 				{ formik.errors.email && <div className="form-errors">{formik.errors.email}</div> }
 			</div>
-			<div className="table-cell">
+			<div className="table-cell table-cell--phone">
 				<input
 					id="phone"
 					name="phone"
@@ -77,17 +77,17 @@ const EditForm = ({ selectedParticipant, handleSubmit, handleSelect }:Props):Rea
 				/>
 				{ formik.errors.phone && <div className="form-errors">{formik.errors.phone}</div> }
 			</div>
-			<div className="table-cell">
+			<div className="table-cell table-cell-end">
 				{!selectedParticipant ? 
-					<button className="submit-btn" type="submit">Add new</button>
+					<button className="submit-btn btn" type="submit">Add new</button>
 					: <div>
 						<button 
-							className="cancel-btn"
+							className="cancel-btn btn"
 							onClick={() => handleSelect(undefined)}
 						>
 								Cancel
 						</button>
-						<button className="submit-btn" type="submit">Save</button>
+						<button className="save-btn btn" type="submit">Save</button>
 					</div>}
 				
 			</div>

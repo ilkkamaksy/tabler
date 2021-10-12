@@ -4,7 +4,8 @@ const Header = ():React.ReactElement => (
 	<header className="App-header">
 		<div className="container">
 			<div className="header-col col--start">
-				<span id="logo">logo</span>
+				<span id="logo"></span>
+				<span id="title">Mord Software</span>
 			</div>
 			
 		</div>
