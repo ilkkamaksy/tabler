@@ -5,10 +5,11 @@ import { Participant } from '../types'
 
 interface Props {
 	selectedParticipant: Participant|undefined
-	handleSubmit: (values:Participant) => void
+	handleSubmit: (participant:Participant) => void
+	handleSelect: (participant:Participant|undefined) => void
 }
 
-const EditForm = ({ selectedParticipant, handleSubmit }:Props):React.ReactElement => {
+const EditForm = ({ selectedParticipant, handleSubmit, handleSelect }:Props):React.ReactElement => {
 	
 	const formik = useFormik({
 		initialValues: selectedParticipant ? selectedParticipant : {
@@ -32,6 +33,8 @@ const EditForm = ({ selectedParticipant, handleSubmit }:Props):React.ReactElemen
 			handleSubmit(values)
 		}
 	})
+
+	
 
 	return (
 		<form className="table-row" onSubmit={formik.handleSubmit}>
@@ -78,7 +81,12 @@ const EditForm = ({ selectedParticipant, handleSubmit }:Props):React.ReactElemen
 				{!selectedParticipant ? 
 					<button className="submit-btn" type="submit">Add new</button>
 					: <div>
-						<button className="cancel-btn" type="submit">Cancel</button>
+						<button 
+							className="cancel-btn"
+							onClick={() => handleSelect(undefined)}
+						>
+								Cancel
+						</button>
 						<button className="submit-btn" type="submit">Save</button>
 					</div>}
 				

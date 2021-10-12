@@ -5,7 +5,7 @@ import EditForm from './EditForm'
 interface Props {
 	participants: Participant[]
 	selectedParticipant: Participant|undefined
-	handleSelect: (value:Participant) => void
+	handleSelect: (value:Participant|undefined) => void
 	handleRemove: (value:Participant) => void
 	handleSubmit: (values:Participant) => void
 }
@@ -20,7 +20,11 @@ const Table = ({
 	return (
 		<div className="table-container">
 			<div className="table">
-				<EditForm handleSubmit={handleSubmit} selectedParticipant={undefined} />
+				<EditForm 
+					handleSubmit={handleSubmit} 
+					selectedParticipant={undefined} 
+					handleSelect={handleSelect} 
+				/>
 			</div>
 			<div className="table">
 				<div className="table-header-group">
@@ -35,7 +39,12 @@ const Table = ({
 					{participants.map(participant => {
 						if (selectedParticipant && selectedParticipant.id === participant.id) {
 							return (
-								<EditForm key={participant.id} selectedParticipant={selectedParticipant} handleSubmit={handleSubmit} />
+								<EditForm 
+									key={participant.id} 
+									selectedParticipant={selectedParticipant} 
+									handleSubmit={handleSubmit} 
+									handleSelect={handleSelect}
+								/>
 							)
 						} else {
 							return (

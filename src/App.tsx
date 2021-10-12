@@ -37,7 +37,7 @@ function App():React.ReactElement {
 		setParticipants(participants.filter(p => p.id !== participant.id))
 	}
 
-	const handleSelect = (participant:Participant) => {
+	const handleSelect = (participant:Participant|undefined) => {
 		setSelectedParticipant(participant)
 	}
 
