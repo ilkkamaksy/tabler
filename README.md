@@ -1,5 +1,7 @@
 # A simple React Table 
 
+See it in action at [https://tablerr.herokuapp.com/](https://tablerr.herokuapp.com/). Notice that it takes a little while to start up due to Heroku free version.
+
 ## Run the app
 
 Clone the repo, go to the project root directory and run:
