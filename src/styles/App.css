@@ -1,0 +1,40 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  background-color: #f1f1f1;
+  color: #757575;
+  min-height: 100vh;
+  max-width: 976px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 912px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 952px) {
+  .container {
+    margin: 0 32px;
+  }  
+}
+
+/* Headings */
+h1 {
+  margin: 2.5em 0 1.5em;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+
+
+

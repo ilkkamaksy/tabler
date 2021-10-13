@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
 import Header from './Components/Header'
 import Table from './Components/Table'
 import { getParticipants } from './services/mockService'
 import { generateID } from './utils/utils'
 import { Participant } from './types'
+import './styles/App.css'
 
 function App():React.ReactElement {
 

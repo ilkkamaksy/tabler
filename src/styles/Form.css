@@ -1,0 +1,61 @@
+input[type="text"] {
+    background: #fafafa;
+    border: 1px solid #eee;
+    line-height: 38px;
+    padding: 0 15px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+}
+  
+.form-errors {
+    font-size: 12px;
+    margin: 8px 8px 0;
+    color: red;
+}
+  
+/* buttons */
+.btn {
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor:pointer;
+    border: none;
+}
+  
+.submit-btn {
+    background: #ededed;
+    width: 120px;
+}
+  
+.submit-btn.active {
+    background: #07f;
+    color: #fff;
+}
+  
+.save-btn.btn {
+    background: #07f;
+    color: #fff;
+    width: 84px;
+}
+  
+.cancel-btn.btn {
+    color: #07f;
+    width: 84px;
+    margin-right:4%;
+}
+  
+.icon-btn {
+    background: transparent;
+    border: none;
+    height: 24px;
+    width: 24px;
+    margin-left: 20px;
+}
+  
+body .icon-btn svg {
+    height: 24px;
+    color: #909090;
+    min-width: 18px;
+    cursor: pointer;
+}

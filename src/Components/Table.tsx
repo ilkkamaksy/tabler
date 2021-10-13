@@ -4,6 +4,7 @@ import EditForm from './EditForm'
 import { useSortableData } from '../hooks/SortableData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp, faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
+import '../styles/Table.css'
 
 interface Props {
 	participants: Participant[]
