@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Tabler",
+  "name": "A simple React table app",
   "icons": [
     {
       "src": "favicon.ico",
